@@ -10,6 +10,7 @@ const wind = document.querySelector(".wind");
 const humid = document.querySelector(".humidity");
 
 
+
 async function getWeather(city){
     try{
         let data = await fetch(`http://api.weatherapi.com/v1/current.json?key=54a4b71f227f408980d81843242306&q=${city}&days=3&aqi=no&alerts=no`)
@@ -43,11 +44,6 @@ async function getWeather(city){
     }
 }
 
-
-// .then((data)=>{data.json()})
-// .then((data)=>console.log(data))
-
-// let place = prompt("Enter The City")
 area.addEventListener("change",(e)=>{
     getWeather(area.value)
 })
