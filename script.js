@@ -8,9 +8,13 @@ const cloud = document.querySelector(".clouds");
 const feels = document.querySelector(".feelslike");
 const wind = document.querySelector(".wind");
 const humid = document.querySelector(".humidity");
+const main = document.querySelector(".main")
+const buffer = document.querySelector(".loader-container");
 
 async function getWeather(city){
-    try{
+        buffer.style = "display:flex"
+        main.style = "display:none"
+
         let data = await fetch(`http://api.weatherapi.com/v1/current.json?key=54a4b71f227f408980d81843242306&q=${city}&days=3&aqi=no&alerts=no`)
         let parsed = await data.json()
         console.log(parsed);
@@ -24,7 +28,9 @@ async function getWeather(city){
         let feelslike = `Feels like : ${parsed.current.feelslike_c}°C`
         let humidity = `Humidity : ${parsed.current.humidity}%`
         let windspeed = `Wind : ${parsed.current.wind_kph}kph`
-
+        
+        buffer.style = "display:none"
+        main.style = "display:flex" 
 
         console.log(img_url,temp_c,daydate,placename);
         img.setAttribute('src',img_url)
@@ -36,10 +42,7 @@ async function getWeather(city){
         feels.innerHTML = feelslike
         wind.innerHTML = windspeed
         humid.innerHTML = humidity
-        
-    }catch(error){
-        console.log(error);
-    }
+
 }
 
 let currentPlace = prompt("Enter your current location")

@@ -92,3 +92,26 @@
     width: 45%;
     font-size: 1.3rem;
 }
+
+.loader-container{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    
+    width: 60%;
+    aspect-ratio: 1;
+    --_c:no-repeat radial-gradient(farthest-side,#b0256a 95%,#0000);
+    background: 
+      var(--_c) top,
+      var(--_c) left,
+      var(--_c) right,
+      var(--_c) bottom;
+    background-size: 42px 42px;
+    animation: l7 1s infinite;
+  }
+  @keyframes l7 {to{transform: rotate(.5turn)}}
